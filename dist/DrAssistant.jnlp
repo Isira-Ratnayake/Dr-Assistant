@@ -9,13 +9,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DrAssistant.jar" size="2435203" download="eager" />
-    <jar href="lib/j2html-1.2.0.jar" size="55506" download="eager" />
-    <jar href="lib/sqlite-jdbc-3.20.0.jar" size="6637012" download="eager" />
+    <jar href="DrAssistant.jar" size="2433696" download="eager" />
+    <jar href="lib\j2html-1.2.2.jar" size="55151" download="eager" />
+    <jar href="lib\sqlite-jdbc-3.40.0.0.jar" size="12760211" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="DrAssistant" >
-    <param name="requiredFXVersion" value="8.0+"/>
-  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="drassistant.DrAssistant"  name="DrAssistant" />
   <update check="background"/>
 </jnlp>
