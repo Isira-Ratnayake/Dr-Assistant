@@ -96,7 +96,7 @@ public class PrescriptionMaker {
                                 p(
                                         b("Provisional Diagnosis"),
                                         br(),
-                                        span(prescription.getDd())
+                                        span(prescription.getPd())
                                 ),
                                 p(
                                         b("Differential  Diagnosis"),

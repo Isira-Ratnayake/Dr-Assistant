@@ -274,7 +274,7 @@ public class PrescriptionGetway {
                         rs.getInt(1),
                         rs.getInt(2),
                         rs.getInt(3),
-                        drugGetway.selectedDrug(rs.getInt(2)).getName(),
+                        drugGetway.selectedDrug(rs.getInt(3)).getName(),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
