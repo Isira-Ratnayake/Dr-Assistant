@@ -45,9 +45,6 @@ public class TemplateDrug {
         this.advice = advice;
     }
 
-  
-    
-
     public int getId() {
         return id;
     }

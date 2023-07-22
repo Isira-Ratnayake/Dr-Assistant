@@ -56,6 +56,7 @@ import model.Prescription;
 import model.PrescriptionDrug;
 import model.Template;
 import model.TemplateDrug;
+import uvimed.typecast.UMTypeCast;
 import view.common.PrescriptionAction;
 import view.patient.PatientCard;
 
@@ -454,6 +455,7 @@ public class NewPrescriptionController implements Initializable {
             taAdvice.setText(prescription.getAdvice());
             tfNextVisit.setText(prescription.getNextVisit());
             prescriptionDrugList = prescriptionGetway.getSelectedPrescriptionDrugs(prescriptionId);
+            templateDrugList = UMTypeCast.CastPDListotTDList(prescriptionDrugList);
             loadPrescriptionDrugTable();
         
         /*
@@ -470,9 +472,9 @@ public class NewPrescriptionController implements Initializable {
     }
     
     public void loadPrescriptionDrugTable() {
-        drugTable.getItems().clear();
+        drugTable.getItems().clear();        
         //Change this in the future
-        //drugTable.getItems().addAll(templateDrugList);
+        drugTable.getItems().addAll(templateDrugList);
         clmSl.setCellValueFactory(new PropertyValueFactory<>("id"));
         clmDrugName.setCellValueFactory(new PropertyValueFactory<>("drug_name"));
         clmDrugType.setCellValueFactory(new PropertyValueFactory<>("type"));
