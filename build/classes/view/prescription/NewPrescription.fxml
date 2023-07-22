@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1006.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prescription.NewPrescriptionController">
+<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1006.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prescription.NewPrescriptionController">
    <children>
       <BorderPane layoutX="439.0" layoutY="261.0" prefHeight="722.0" prefWidth="1078.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -132,7 +132,7 @@
                <right>
                   <HBox alignment="CENTER_RIGHT" prefHeight="63.0" prefWidth="292.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ComboBox fx:id="comboBoxHistory" onAction="#handlePrescriptonHistory" prefHeight="31.0" prefWidth="277.0" promptText="Prescription history" />
+                        <ComboBox fx:id="comboBoxHistory" onAction="#handlePrescriptionOnAction" prefHeight="31.0" prefWidth="277.0" promptText="Prescription history" />
                      </children>
                   </HBox>
                </right>

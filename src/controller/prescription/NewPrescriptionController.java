@@ -53,6 +53,7 @@ import javax.imageio.ImageIO;
 import model.Drug;
 import model.Patient;
 import model.Prescription;
+import model.PrescriptionDrug;
 import model.Template;
 import model.TemplateDrug;
 import view.common.PrescriptionAction;
@@ -433,5 +434,52 @@ public class NewPrescriptionController implements Initializable {
             }
         }
     }
-
+    
+    /*************** UVIMED *****************/
+    
+    ObservableList<PrescriptionDrug> prescriptionDrugList = FXCollections.observableArrayList();
+    
+        @FXML
+    private void handlePrescriptionOnAction(ActionEvent event) {
+        loadPrescriptionDetails(comboBoxHistory.getSelectionModel().getSelectedItem().getId());
+    }
+    
+    public void loadPrescriptionDetails(int prescriptionId) {
+        prescription = prescriptionGetway.getPrescription(prescriptionId);
+            taCC.setText(prescription.getCc());
+            taDD.setText(prescription.getDd());
+            taOE.setText(prescription.getOe());
+            taPD.setText(prescription.getPd());
+            taLabWorkup.setText(prescription.getLabWorkUp());
+            taAdvice.setText(prescription.getAdvice());
+            tfNextVisit.setText(prescription.getNextVisit());
+            prescriptionDrugList = prescriptionGetway.getSelectedPrescriptionDrugs(prescriptionId);
+            loadPrescriptionDrugTable();
+        
+        /*
+            template = templateGetway.selectedTemplate(templateId);
+            taCC.setText(template.getCc());
+            taDD.setText(template.getDd());
+            taOE.setText(template.getOe());
+            taPD.setText(template.getPd());
+            taLabWorkup.setText(template.getLab_workup());
+            taAdvice.setText(template.getAdvice());
+            templateDrugList = templateGetway.getSelectedTemplateDrugs(templateId);
+            loadDrugTable();
+        */
+    }
+    
+    public void loadPrescriptionDrugTable() {
+        drugTable.getItems().clear();
+        //Change this in the future
+        //drugTable.getItems().addAll(templateDrugList);
+        clmSl.setCellValueFactory(new PropertyValueFactory<>("id"));
+        clmDrugName.setCellValueFactory(new PropertyValueFactory<>("drug_name"));
+        clmDrugType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        clmAdvice.setCellValueFactory(new PropertyValueFactory<>("advice"));
+        clmDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        clmStrength.setCellValueFactory(new PropertyValueFactory<>("strength"));
+        clmDose.setCellValueFactory(new PropertyValueFactory<>("dose"));
+        clmAction.setCellFactory(action);
+    }
 }
