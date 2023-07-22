@@ -289,6 +289,7 @@ public class NewPrescriptionController implements Initializable {
     }
 
     private void loadDrug() {
+        comboBoxDrug.getItems().clear();
         drugs = drugGetway.allDrugs();
         comboBoxDrug.getItems().addAll(drugs);
         comboBoxDrug.setConverter(new StringConverter<Drug>() {
