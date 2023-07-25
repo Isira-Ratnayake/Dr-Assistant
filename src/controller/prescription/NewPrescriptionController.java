@@ -458,18 +458,7 @@ public class NewPrescriptionController implements Initializable {
             prescriptionDrugList = prescriptionGetway.getSelectedPrescriptionDrugs(prescriptionId);
             templateDrugList = UMTypeCast.CastPDListotTDList(prescriptionDrugList);
             loadPrescriptionDrugTable();
-        
-        /*
-            template = templateGetway.selectedTemplate(templateId);
-            taCC.setText(template.getCc());
-            taDD.setText(template.getDd());
-            taOE.setText(template.getOe());
-            taPD.setText(template.getPd());
-            taLabWorkup.setText(template.getLab_workup());
-            taAdvice.setText(template.getAdvice());
-            templateDrugList = templateGetway.getSelectedTemplateDrugs(templateId);
-            loadDrugTable();
-        */
+
     }
     
     public void loadPrescriptionDrugTable() {

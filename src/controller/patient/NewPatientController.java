@@ -5,6 +5,7 @@
  */
 package controller.patient;
 
+import controller.prescription.NewPrescriptionController;
 import getway.PatientGetway;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,7 +25,10 @@ import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -34,9 +38,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import model.Patient;
+import uvimed.getway.UMPatientGetway;
 
 /**
  * FXML Controller class
@@ -153,6 +159,45 @@ public class NewPatientController implements Initializable {
         }
         return copyFile.getName();
 
+    }
+    
+    /*************** UVIMED *****************/
+    
+    UMPatientGetway umPatientGetway = new UMPatientGetway();
+    
+    @FXML    
+    private void patientSaveAndPrescribeOnAction(ActionEvent event) {
+        System.out.println("save patient");
+        LocalDate date = dpDateOfBirth.getValue();
+        Date today = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        int sex = radioMale.isSelected() ? 1 : radioFeMale.isSelected() ? 2 : 0;
+        if (patientGetway.save(new Patient(0, copyImage(), tfName.getText(), date, sex, tfEmail.getText(), tfPhone.getText(), taAddress.getText(), dateFormat.format(today)))) {
+            resetForm();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Patient saved successfully");
+            alert.setHeaderText("Patient saved");
+            alert.setContentText("Patient saved successfullly");
+            alert.showAndWait();
+            
+            openPrescriptionStage(umPatientGetway.newestPatient().getId());
+        }
+    }
+    
+        private void openPrescriptionStage(int patientId) {
+        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/view/prescription/NewPrescription.fxml"));
+        try {
+            Parent root = fXMLLoader.load();
+            NewPrescriptionController controller = fXMLLoader.getController();
+            controller.loadPatient(patientId);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Edit Patient");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

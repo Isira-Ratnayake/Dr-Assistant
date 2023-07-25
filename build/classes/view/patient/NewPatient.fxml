@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="684.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.patient.NewPatientController">
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="684.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.patient.NewPatientController">
    <children>
       <BorderPane layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -80,12 +80,13 @@
                   <TextField fx:id="tfPhone" promptText="Patient Phone" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
                   <TextField fx:id="tfEmail" promptText="Patient Email address" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                   <TextArea fx:id="taAddress" prefHeight="65.0" prefWidth="181.0" promptText="Patient mailing address" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="2" />
-                  <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
-                    <buttons>
-                      <Button cancelButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#cancelOnAction" text="Cancel" />
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#patientSaveOnAction" text="Save" />
-                    </buttons>
+                  <ButtonBar prefHeight="50.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                     <buttons>
+                        <Button contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#patientSaveAndPrescribeOnAction" prefHeight="34.0" prefWidth="210.0" text="Save and Prescribe" />
+                     </buttons>
                   </ButtonBar>
+                  <Button mnemonicParsing="false" onAction="#patientSaveOnAction" prefHeight="34.0" prefWidth="106.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                <Button cancelButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="34.0" prefWidth="107.0" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                </children>
             </GridPane>
          </center>
