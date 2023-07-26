@@ -171,6 +171,7 @@ public class NewPatientController implements Initializable {
         LocalDate date = dpDateOfBirth.getValue();
         Date today = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String name = tfName.getText();
         int sex = radioMale.isSelected() ? 1 : radioFeMale.isSelected() ? 2 : 0;
         if (patientGetway.save(new Patient(0, copyImage(), tfName.getText(), date, sex, tfEmail.getText(), tfPhone.getText(), taAddress.getText(), dateFormat.format(today)))) {
             resetForm();
@@ -180,7 +181,7 @@ public class NewPatientController implements Initializable {
             alert.setContentText("Patient saved successfullly");
             alert.showAndWait();
             
-            openPrescriptionStage(umPatientGetway.newestPatient().getId());
+            openPrescriptionStage(umPatientGetway.selectedPatient(name, date).getId());
         }
     }
     
