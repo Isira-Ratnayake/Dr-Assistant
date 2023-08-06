@@ -19,9 +19,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1006.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prescription.NewPrescriptionController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1082.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prescription.NewPrescriptionController">
    <children>
-      <BorderPane layoutX="439.0" layoutY="261.0" prefHeight="722.0" prefWidth="1078.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="439.0" layoutY="261.0" prefHeight="708.0" prefWidth="1088.0" AnchorPane.bottomAnchor="602.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox prefHeight="641.0" prefWidth="233.0" BorderPane.alignment="CENTER">
                <children>
@@ -48,7 +48,7 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleSavePrescription" prefHeight="37.0" prefWidth="898.0" styleClass="btn-primary" text="Save &amp; Print Prescription" />
+                  <Button mnemonicParsing="false" onAction="#handleSavePrescription" prefHeight="62.0" prefWidth="898.0" styleClass="btn-primary" text="Save &amp; Print Prescription" />
                </children>
             </HBox>
          </bottom>
@@ -155,6 +155,15 @@
                   </HBox>
                </center>
             </BorderPane>
+         </top>
+      </BorderPane>
+      <BorderPane layoutX="2.0" layoutY="720.0" prefHeight="90.0" prefWidth="1078.0">
+         <top>
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1083.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="898.0" styleClass="btn-secondary" text="Save as Template" />
+               </children>
+            </HBox>
          </top>
       </BorderPane>
    </children>
