@@ -161,7 +161,7 @@
          <top>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="1083.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="898.0" styleClass="btn-secondary" text="Save as Template" />
+                  <Button mnemonicParsing="false" onAction="#handleNewTemplateOnAction" prefHeight="46.0" prefWidth="898.0" styleClass="btn-secondary" text="Save as Template" />
                </children>
             </HBox>
          </top>

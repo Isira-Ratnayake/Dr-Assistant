@@ -56,6 +56,7 @@ import model.Prescription;
 import model.PrescriptionDrug;
 import model.Template;
 import model.TemplateDrug;
+import uvimed.controller.NewTemplateNamer;
 import uvimed.typecast.UMTypeCast;
 import view.common.PrescriptionAction;
 import view.patient.PatientCard;
@@ -317,6 +318,7 @@ public class NewPrescriptionController implements Initializable {
     }
 
     private void loadTemplate() {
+        comboBoxTemplate.getItems().clear();
         templates = templateGetway.templates();
         comboBoxTemplate.getItems().addAll(templates);
         comboBoxTemplate.setConverter(new StringConverter<Template>() {
@@ -441,9 +443,51 @@ public class NewPrescriptionController implements Initializable {
     
     ObservableList<PrescriptionDrug> prescriptionDrugList = FXCollections.observableArrayList();
     
-        @FXML
+    @FXML
     private void handlePrescriptionOnAction(ActionEvent event) {
         loadPrescriptionDetails(comboBoxHistory.getSelectionModel().getSelectedItem().getId());
+    }
+    
+    @FXML
+    private void handleNewTemplateOnAction(ActionEvent event) throws IOException{
+        
+        if (templateDrugList.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Add drug first");
+            alert.setHeaderText("You didn't add any drug");
+            alert.show();
+        }
+        else {
+            template.setCc(taCC.getText());
+            template.setOe(taOE.getText());
+            template.setDd(taDD.getText());
+            template.setPd(taPD.getText());
+            template.setAdvice(taAdvice.getText());
+            template.setLab_workup(taLabWorkup.getText());
+            
+            FXMLLoader fXMLLoader = new FXMLLoader();
+            fXMLLoader.setLocation(getClass().getResource("/uvimed/view/NewTemplateNamer.fxml"));
+            Parent root = fXMLLoader.load();
+            NewTemplateNamer newTemplateNamer = fXMLLoader.getController();
+
+            //Template Name, Note must be added in the next scene
+            newTemplateNamer.setTemplateStruct(template, templateDrugList);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("New Template");
+            stage.show();
+
+
+            stage.setOnCloseRequest((WindowEvent event1) -> {
+                //Reset the template list
+                templates.clear();
+                loadTemplate();
+            });
+        }
+        
     }
     
     public void loadPrescriptionDetails(int prescriptionId) {

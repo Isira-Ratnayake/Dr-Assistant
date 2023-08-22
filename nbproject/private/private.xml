@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assistant/Dr-Assistant/src/getway/bll/PatientBLL.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assistant/Dr-Assistant/src/getway/PatientGetway.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assistant/Dr-Assistant/src/controller/patient/NewPatientController.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assistant/Dr-Assistant/src/uvimed/getway/UMPatientGetway.java</file>
+            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/controller/prescription/NewPrescriptionController.java</file>
+            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/model/Template.java</file>
+            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/controller/template/NewTemplateController.java</file>
+            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/model/TemplateDrug.java</file>
+            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/uvimed/controller/NewTemplateNamer.java</file>
         </group>
     </open-files>
 </project-private>
