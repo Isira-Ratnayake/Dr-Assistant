@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/controller/prescription/NewPrescriptionController.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/model/Template.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/controller/template/NewTemplateController.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/model/TemplateDrug.java</file>
-            <file>file:/C:/Users/Work/Desktop/Dr-Assisstant/Dr-Assistant/src/uvimed/controller/NewTemplateNamer.java</file>
+            <file>file:/C:/Users/Work/Desktop/dr-assistant/Dr-Assistant/src/controller/prescription/ViewPrescriptionController.java</file>
+            <file>file:/C:/Users/Work/Desktop/dr-assistant/Dr-Assistant/src/controller/prescription/NewPrescriptionController.java</file>
+            <file>file:/C:/Users/Work/Desktop/dr-assistant/Dr-Assistant/src/uvimed/controller/EditPrescriptionController.java</file>
         </group>
     </open-files>
 </project-private>

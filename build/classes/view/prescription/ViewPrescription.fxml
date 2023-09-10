@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="992.0" stylesheets="@../../css/main.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.prescription.ViewPrescriptionController">
+<AnchorPane id="AnchorPane" prefHeight="728.0" prefWidth="992.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.prescription.ViewPrescriptionController">
    <children>
       <BorderPane layoutX="396.0" layoutY="252.0" prefHeight="728.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -22,7 +21,12 @@
                         <Label fx:id="lblDate" text="Date" />
                      </children>
                   </VBox>
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handlePrintButton" prefHeight="47.0" prefWidth="82.0" text="Print">
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handleEditPrescription" prefHeight="47.0" prefWidth="133.0" text="Edit Prescription">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handlePrintButton" prefHeight="47.0" prefWidth="82.0" style="-fx-background-color: #4169E1;" text="Print">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

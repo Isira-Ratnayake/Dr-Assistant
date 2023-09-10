@@ -5,14 +5,13 @@
  */
 package controller.prescription;
 
+import controller.patient.PatientsController;
 import controller.template.ViewTemplateController;
 import getway.PatientGetway;
 import getway.PrescriptionGetway;
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -22,18 +21,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.print.PageOrientation;
 import javafx.print.Paper;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.Patient;
 import model.Prescription;
 import model.PrescriptionDrug;
+import uvimed.controller.EditPrescriptionController;
 import view.html.PrescriptionMaker;
 
 /**
@@ -93,7 +98,9 @@ public class ViewPrescriptionController implements Initializable {
     }
 
     public void loadPrescription(int prescriptionId) {
+        this.prescriptionId = prescriptionId;
         prescription = prescriptionGetway.getPrescription(prescriptionId);
+        this.patientId = prescription.getPatientId();
         drugs = prescriptionGetway.getSelectedPrescriptionDrugs(prescriptionId);
         patient = patientGetway.selectedPatient(prescription.getPatientId());
         lblPatientName.setText("Patient Name : " + prescription.getPatientName());
@@ -115,4 +122,36 @@ public class ViewPrescriptionController implements Initializable {
         }
     }
 
+
+    /*************** UVIMED *****************/  
+    
+    private int prescriptionId;
+    private int patientId;
+    
+    
+    @FXML
+    private void handleEditPrescription(ActionEvent event) {
+        openEditPrescriptionStage(patientId, prescriptionId);
+        //loadPrintablePrescription(1, false);
+    }
+    
+    private void openEditPrescriptionStage(int patientId, int prescriptionId) {
+        FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/uvimed/view/EditPrescription.fxml"));
+        try {
+            Parent root = fXMLLoader.load();
+            EditPrescriptionController controller = fXMLLoader.getController();
+            controller.loadPatient(patientId);
+            //load prescription
+            controller.loadPrescriptionDetails(prescriptionId);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Edit Patient");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientsController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }
+    
 }
