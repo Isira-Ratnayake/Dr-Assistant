@@ -35,6 +35,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import model.Patient;
 import model.Prescription;
 import model.PrescriptionDrug;
@@ -143,11 +144,15 @@ public class ViewPrescriptionController implements Initializable {
             controller.loadPatient(patientId);
             //load prescription
             controller.loadPrescriptionDetails(prescriptionId);
+            controller.setCredentials(prescriptionId, patientId);
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
             stage.setTitle("Edit Patient");
             stage.setScene(new Scene(root));
             stage.show();
+            stage.setOnCloseRequest((WindowEvent event1) -> {
+                this.loadPrescription(prescriptionId);
+            });
         } catch (IOException ex) {
             Logger.getLogger(PatientsController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());

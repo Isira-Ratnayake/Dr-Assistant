@@ -9,7 +9,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DrAssistant.jar" size="2458849" download="eager" />
+    <jar href="DrAssistant.jar" size="2461544" download="eager" />
     <jar href="lib\j2html-1.2.2.jar" size="55151" download="eager" />
     <jar href="lib\sqlite-jdbc-3.40.0.0.jar" size="12760211" download="eager" />
   </resources>

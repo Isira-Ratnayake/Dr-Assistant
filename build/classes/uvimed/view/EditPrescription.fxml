@@ -48,7 +48,7 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="898.0" styleClass="btn-primary" text="Update Prescription" />
+                  <Button mnemonicParsing="false" onAction="#handleUpdatePrescription" prefHeight="62.0" prefWidth="898.0" styleClass="btn-primary" text="Update Prescription" />
                </children>
             </HBox>
          </bottom>

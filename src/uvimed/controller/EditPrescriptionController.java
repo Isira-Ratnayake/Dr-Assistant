@@ -57,7 +57,7 @@ import model.Prescription;
 import model.PrescriptionDrug;
 import model.Template;
 import model.TemplateDrug;
-import uvimed.controller.NewTemplateNamer;
+import uvimed.getway.UMPrescriptionGetway;
 import uvimed.typecast.UMTypeCast;
 import view.common.PrescriptionAction;
 import view.patient.PatientCard;
@@ -441,8 +441,16 @@ public class EditPrescriptionController implements Initializable {
     }
     
     /*************** UVIMED *****************/
-    
+    private int prescription_id;
+    private int patient_id;
+    private UMPrescriptionGetway umPrescriptionGetway = new UMPrescriptionGetway();
     ObservableList<PrescriptionDrug> prescriptionDrugList = FXCollections.observableArrayList();
+    
+    
+    public void setCredentials(int prescription_id, int patient_id) {
+        this.prescription_id = prescription_id;
+        this.patient_id = patient_id;
+    }
     
     @FXML
     private void handlePrescriptionOnAction(ActionEvent event) {
@@ -493,16 +501,16 @@ public class EditPrescriptionController implements Initializable {
     
     public void loadPrescriptionDetails(int prescriptionId) {
         prescription = prescriptionGetway.getPrescription(prescriptionId);
-            taCC.setText(prescription.getCc());
-            taDD.setText(prescription.getDd());
-            taOE.setText(prescription.getOe());
-            taPD.setText(prescription.getPd());
-            taLabWorkup.setText(prescription.getLabWorkUp());
-            taAdvice.setText(prescription.getAdvice());
-            tfNextVisit.setText(prescription.getNextVisit());
-            prescriptionDrugList = prescriptionGetway.getSelectedPrescriptionDrugs(prescriptionId);
-            templateDrugList = UMTypeCast.CastPDListotTDList(prescriptionDrugList);
-            loadPrescriptionDrugTable();
+        taCC.setText(prescription.getCc());
+        taDD.setText(prescription.getDd());
+        taOE.setText(prescription.getOe());
+        taPD.setText(prescription.getPd());
+        taLabWorkup.setText(prescription.getLabWorkUp());
+        taAdvice.setText(prescription.getAdvice());
+        tfNextVisit.setText(prescription.getNextVisit());
+        prescriptionDrugList = prescriptionGetway.getSelectedPrescriptionDrugs(prescriptionId);
+        templateDrugList = UMTypeCast.CastPDListotTDList(prescriptionDrugList);
+        loadPrescriptionDrugTable();
 
     }
     
@@ -519,4 +527,28 @@ public class EditPrescriptionController implements Initializable {
         clmDose.setCellValueFactory(new PropertyValueFactory<>("dose"));
         clmAction.setCellFactory(action);
     }
+    
+    @FXML
+    private void handleUpdatePrescription(ActionEvent event) {
+        if (patient.getId() != 0) {
+            prescription.setId(prescription_id);
+            prescription.setPatientId(patient.getId());
+            prescription.setDate(LocalDate.now().toString());
+            prescription.setCc(taCC.getText());
+            prescription.setOe(taOE.getText());
+            prescription.setDd(taDD.getText());
+            prescription.setLabWorkUp(taLabWorkup.getText());
+            prescription.setAdvice(taAdvice.getText());
+            prescription.setPd(taPD.getText());
+            prescription.setNextVisit(tfNextVisit.getText());
+            umPrescriptionGetway.update(prescription, templateDrugList);
+            System.out.println(templateDrugList.size());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Prescription Updated");
+            alert.setHeaderText("Prescription Updated.");
+            alert.showAndWait();
+        }
+
+    }
+    
 }
